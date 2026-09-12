@@ -2,7 +2,7 @@
 <html lang="en" class="scroll-smooth">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
 <!-- ==================== SEO — PRIMARY ==================== -->
 <title>Dinesh E | Business Development Lead — B2B SaaS &amp; IT Sales Expert</title>
@@ -189,13 +189,23 @@
 
 <!-- ==================== CUSTOM CSS ==================== -->
 <style>
-  :root { scroll-padding-top: 6.5rem; }
+  :root { scroll-padding-top: 5.5rem; }
+
+  @media (min-width: 640px) {
+    :root { scroll-padding-top: 6.5rem; }
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
 
   body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
+  /* ---------- Scroll reveal ---------- */
   .js .reveal {
     opacity: 0;
     transform: translateY(24px);
@@ -208,6 +218,7 @@
     transform: none;
   }
 
+  /* ---------- Gradient text ---------- */
   .text-gradient {
     background: linear-gradient(96deg, #0A2540 0%, #00A86B 55%, #00D084 100%);
     -webkit-background-clip: text;
@@ -221,16 +232,43 @@
     color: transparent;
   }
 
+  /* ---------- Animated pipeline bars ---------- */
   .bar-fill {
     width: 0;
     transition: width 1.1s cubic-bezier(.22,1,.36,1);
   }
   .is-visible .bar-fill { width: var(--w); }
 
+  /* ---------- Active nav link ---------- */
   .nav-link.active { color: #0A2540; }
   .dark .nav-link.active { color: #FFFFFF; }
   .nav-link.active::after { transform: scaleX(1); }
 
+  /* ---------- Long text safety ---------- */
+  .break-safe {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  /* ---------- iOS safe-area offsets for floating buttons ---------- */
+  .fab-contact {
+    bottom: calc(5rem + env(safe-area-inset-bottom, 0px));
+  }
+  @media (min-width: 640px) {
+    .fab-contact {
+      bottom: calc(6rem + env(safe-area-inset-bottom, 0px));
+    }
+  }
+  .to-top-btn {
+    bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  }
+  @media (min-width: 640px) {
+    .to-top-btn {
+      bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+    }
+  }
+
+  /* ---------- Focus visible (a11y) ---------- */
   a:focus-visible,
   button:focus-visible {
     outline: 2px solid #00D084;
@@ -238,6 +276,7 @@
     border-radius: 0.5rem;
   }
 
+  /* ---------- Reduced motion ---------- */
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .js .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
@@ -250,22 +289,22 @@
 <body class="bg-mist font-sans text-ink antialiased overflow-x-hidden transition-colors duration-300 dark:bg-slate-950 dark:text-slate-300">
 
 <!-- ==================== SKIP LINK ==================== -->
-<a href="#home" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-navy focus:px-4 focus:py-2 focus:text-white dark:focus:bg-accent dark:focus:text-navy">
+<a href="#home" class="sr-only focus:not-sr-only focus:absolute focus:left-3 focus:top-3 focus:z-[100] focus:rounded-lg focus:bg-navy focus:px-4 focus:py-2 focus:text-white dark:focus:bg-accent dark:focus:text-navy sm:focus:left-4 sm:focus:top-4">
   Skip to content
 </a>
 
 <!-- ==================== HEADER / NAV ==================== -->
 <header id="site-header" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
-  <nav class="mx-auto max-w-6xl px-4 sm:px-6" aria-label="Primary">
+  <nav class="mx-auto max-w-6xl px-3 sm:px-6" aria-label="Primary">
     <div id="navShell"
-         class="mt-4 flex items-center justify-between rounded-2xl border border-white/70 bg-white/80 px-4 py-3 shadow-card backdrop-blur-md transition-all duration-300 dark:border-slate-800 dark:bg-slate-900/80 sm:px-6">
+         class="mt-2 flex items-center justify-between gap-2 rounded-2xl border border-white/70 bg-white/85 px-3 py-2.5 shadow-card backdrop-blur-md transition-all duration-300 dark:border-slate-800 dark:bg-slate-900/85 sm:mt-4 sm:gap-4 sm:px-6 sm:py-3">
 
       <!-- Logo -->
-      <a href="#home" class="group flex items-center gap-2.5" aria-label="Dinesh E — Home">
-        <span class="grid h-9 w-9 place-items-center rounded-xl bg-navy font-display text-sm font-bold text-accent transition-transform duration-300 group-hover:scale-105 dark:bg-slate-800">
+      <a href="#home" class="group flex min-w-0 items-center gap-2 sm:gap-2.5" aria-label="Dinesh E — Home">
+        <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-navy font-display text-sm font-bold text-accent transition-transform duration-300 group-hover:scale-105 dark:bg-slate-800">
           DE
         </span>
-        <span class="font-display text-base font-semibold tracking-tight text-navy dark:text-white">
+        <span class="truncate font-display text-sm font-semibold tracking-tight text-navy dark:text-white sm:text-base">
           Dinesh&nbsp;E<span class="text-accent">.</span>
         </span>
       </a>
@@ -279,7 +318,7 @@
       </ul>
 
       <!-- Right cluster -->
-      <div class="flex items-center gap-2">
+      <div class="flex shrink-0 items-center gap-1.5 sm:gap-2">
 
         <!-- THEME TOGGLE -->
         <button id="themeToggle" type="button"
@@ -332,18 +371,18 @@
 <main>
 
   <!-- ==================== HERO ==================== -->
-  <section id="home" class="relative overflow-hidden pt-32 pb-20 sm:pt-36 lg:pt-40 lg:pb-28">
+  <section id="home" class="relative overflow-hidden pt-24 pb-14 sm:pt-32 sm:pb-20 lg:pt-40 lg:pb-28">
     <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
-      <div class="absolute -left-24 -top-24 h-80 w-80 rounded-full bg-accent/10 blur-3xl"></div>
-      <div class="absolute -right-24 top-40 h-96 w-96 rounded-full bg-navy/10 blur-3xl dark:bg-accent/5"></div>
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(10,37,64,0.07)_1px,transparent_0)] [background-size:26px_26px] dark:bg-[radial-gradient(circle_at_1px_1px,rgba(148,163,184,0.08)_1px,transparent_0)]"></div>
+      <div class="absolute -left-24 -top-24 h-64 w-64 rounded-full bg-accent/10 blur-3xl sm:h-80 sm:w-80"></div>
+      <div class="absolute -right-24 top-40 h-72 w-72 rounded-full bg-navy/10 blur-3xl dark:bg-accent/5 sm:h-96 sm:w-96"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(10,37,64,0.07)_1px,transparent_0)] [background-size:22px_22px] dark:bg-[radial-gradient(circle_at_1px_1px,rgba(148,163,184,0.08)_1px,transparent_0)] sm:[background-size:26px_26px]"></div>
     </div>
 
-    <div class="mx-auto grid max-w-6xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-12 lg:gap-10">
+    <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 sm:gap-14 sm:px-6 lg:grid-cols-12 lg:gap-10">
 
       <!-- Copy -->
       <div class="reveal lg:col-span-7">
-        <span class="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-accentDark dark:text-accent">
+        <span class="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-accentDark dark:text-accent sm:px-3.5 sm:text-xs">
           <span class="relative flex h-2 w-2">
             <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75"></span>
             <span class="relative inline-flex h-2 w-2 rounded-full bg-accent"></span>
@@ -351,83 +390,83 @@
           Open to Business Development Roles
         </span>
 
-        <h1 class="mt-6 font-display text-4xl font-extrabold leading-[1.1] tracking-tight text-navy dark:text-white sm:text-5xl lg:text-[3.5rem]">
+        <h1 class="mt-5 font-display text-[2rem] font-extrabold leading-[1.12] tracking-tight text-navy dark:text-white sm:mt-6 sm:text-5xl sm:leading-[1.1] lg:text-[3.5rem]">
           Turning Cold Prospects<br class="hidden sm:block" />
           into <span class="text-gradient">Closed Deals.</span>
         </h1>
 
-        <p class="mt-6 max-w-xl text-base leading-relaxed text-ink dark:text-slate-300 sm:text-lg">
+        <p class="mt-5 max-w-xl text-[15px] leading-relaxed text-ink dark:text-slate-300 sm:mt-6 sm:text-base lg:text-lg">
           Business Development professional with <strong class="font-semibold text-navy dark:text-white">3+ years</strong> of experience across
           <strong class="font-semibold text-navy dark:text-white">B2B SaaS, CPaaS and IT services</strong>. I build pipelines, qualify
           prospects, run discovery calls and negotiate revenue-driving deals — end to end.
         </p>
 
         <!-- Contact strip (real details) -->
-        <ul class="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2.5 text-sm">
-          <li>
+        <ul class="mt-6 flex flex-col gap-2.5 text-sm sm:mt-7 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-5 sm:gap-y-2.5">
+          <li class="min-w-0">
             <a href="tel:+919066734707" class="group inline-flex items-center gap-2 font-medium text-ink transition-colors hover:text-navy dark:text-slate-300 dark:hover:text-accent">
-              <svg class="h-4 w-4 text-accentDark dark:text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <svg class="h-4 w-4 shrink-0 text-accentDark dark:text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
               </svg>
-              +91-9066734707
+              <span>+91-9066734707</span>
             </a>
           </li>
-          <li>
-            <a href="mailto:dineshofficial7698@gmail.com" class="group inline-flex items-center gap-2 font-medium text-ink transition-colors hover:text-navy dark:text-slate-300 dark:hover:text-accent">
-              <svg class="h-4 w-4 text-accentDark dark:text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <li class="min-w-0">
+            <a href="mailto:dineshofficial7698@gmail.com" class="group inline-flex min-w-0 items-center gap-2 font-medium text-ink transition-colors hover:text-navy dark:text-slate-300 dark:hover:text-accent">
+              <svg class="h-4 w-4 shrink-0 text-accentDark dark:text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                 <rect x="3" y="5" width="18" height="14" rx="2" />
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 7l9 6 9-6" />
               </svg>
-              dineshofficial7698@gmail.com
+              <span class="break-safe">dineshofficial7698@gmail.com</span>
             </a>
           </li>
-          <li>
+          <li class="min-w-0">
             <a href="https://www.linkedin.com/in/dinesh7698/" target="_blank" rel="noopener noreferrer me" class="group inline-flex items-center gap-2 font-medium text-ink transition-colors hover:text-navy dark:text-slate-300 dark:hover:text-accent">
-              <svg class="h-4 w-4 text-accentDark dark:text-accent" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <svg class="h-4 w-4 shrink-0 text-accentDark dark:text-accent" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.3c0-1.27-.02-2.9-1.77-2.9-1.77 0-2.04 1.38-2.04 2.8V21h-4z" />
               </svg>
-              linkedin.com/in/dinesh7698
+              <span>linkedin.com/in/dinesh7698</span>
             </a>
           </li>
           <li class="inline-flex items-center gap-2 font-medium text-ink dark:text-slate-300">
-            <svg class="h-4 w-4 text-accentDark dark:text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <svg class="h-4 w-4 shrink-0 text-accentDark dark:text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-7-6.5-7-11a7 7 0 1114 0c0 4.5-7 11-7 11z" />
               <circle cx="12" cy="10" r="2.5" />
             </svg>
-            Bengaluru, India
+            <span>Bengaluru, India</span>
           </li>
         </ul>
 
-        <div class="mt-8 flex flex-wrap items-center gap-3">
+        <div class="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center">
           <a href="#experience"
-             class="group inline-flex items-center gap-2 rounded-xl bg-navy px-6 py-3.5 text-sm font-semibold text-white shadow-card transition-all duration-300 hover:-translate-y-0.5 hover:bg-navyLight hover:shadow-cardHover dark:bg-accent dark:text-navy dark:hover:bg-accentDark dark:hover:text-white">
+             class="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-navy px-6 py-3.5 text-sm font-semibold text-white shadow-card transition-all duration-300 hover:-translate-y-0.5 hover:bg-navyLight hover:shadow-cardHover dark:bg-accent dark:text-navy dark:hover:bg-accentDark dark:hover:text-white sm:w-auto">
             View My Sales Metrics
             <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14m0 0l-6-6m6 6l6-6" />
             </svg>
           </a>
           <a href="#contact"
-             class="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-6 py-3.5 text-sm font-semibold text-navy transition-all duration-300 hover:-translate-y-0.5 hover:border-navy hover:shadow-card dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:hover:border-accent">
+             class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-6 py-3.5 text-sm font-semibold text-navy transition-all duration-300 hover:-translate-y-0.5 hover:border-navy hover:shadow-card dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:hover:border-accent sm:w-auto">
             Let's Connect
           </a>
         </div>
 
         <!-- Quick stats -->
-        <dl class="mt-12 grid max-w-lg grid-cols-3 gap-4 border-t border-slate-200 pt-8 dark:border-slate-800">
+        <dl class="mt-9 grid max-w-lg grid-cols-3 gap-3 border-t border-slate-200 pt-6 dark:border-slate-800 sm:mt-12 sm:gap-4 sm:pt-8">
           <div>
             <dt class="sr-only">Years of experience</dt>
-            <dd class="font-display text-2xl font-bold text-navy dark:text-white sm:text-3xl">3+</dd>
-            <p class="mt-1 text-xs font-medium text-ink dark:text-slate-400 sm:text-sm">Years in Sales</p>
+            <dd class="font-display text-xl font-bold text-navy dark:text-white sm:text-3xl">3+</dd>
+            <p class="mt-1 text-[11px] font-medium leading-tight text-ink dark:text-slate-400 sm:text-sm">Years in Sales</p>
           </div>
           <div>
             <dt class="sr-only">Best MQL to SQL conversion</dt>
-            <dd class="font-display text-2xl font-bold text-navy dark:text-white sm:text-3xl">10–20<span class="text-accent">%</span></dd>
-            <p class="mt-1 text-xs font-medium text-ink dark:text-slate-400 sm:text-sm">MQL → SQL Lift</p>
+            <dd class="font-display text-xl font-bold text-navy dark:text-white sm:text-3xl">10–20<span class="text-accent">%</span></dd>
+            <p class="mt-1 text-[11px] font-medium leading-tight text-ink dark:text-slate-400 sm:text-sm">MQL → SQL Lift</p>
           </div>
           <div>
             <dt class="sr-only">Average deal value closed</dt>
-            <dd class="font-display text-2xl font-bold text-navy dark:text-white sm:text-3xl">₹1L</dd>
-            <p class="mt-1 text-xs font-medium text-ink dark:text-slate-400 sm:text-sm">Top Deal Value</p>
+            <dd class="font-display text-xl font-bold text-navy dark:text-white sm:text-3xl">₹1L</dd>
+            <p class="mt-1 text-[11px] font-medium leading-tight text-ink dark:text-slate-400 sm:text-sm">Top Deal Value</p>
           </div>
         </dl>
       </div>
@@ -435,55 +474,55 @@
       <!-- Pipeline card -->
       <div class="reveal lg:col-span-5">
         <div class="relative">
-          <div class="absolute -inset-3 -z-10 rounded-[2rem] bg-gradient-to-br from-accent/20 via-transparent to-navy/10 blur-xl dark:from-accent/10 dark:to-accent/5" aria-hidden="true"></div>
+          <div class="absolute -inset-2 -z-10 rounded-[2rem] bg-gradient-to-br from-accent/20 via-transparent to-navy/10 blur-xl dark:from-accent/10 dark:to-accent/5 sm:-inset-3" aria-hidden="true"></div>
 
-          <div class="rounded-3xl border border-white bg-white p-6 shadow-cardHover dark:border-slate-800 dark:bg-slate-900 sm:p-7">
+          <div class="rounded-3xl border border-white bg-white p-5 shadow-cardHover dark:border-slate-800 dark:bg-slate-900 sm:p-7">
             <div class="flex items-center justify-between">
               <h2 class="font-display text-base font-semibold text-navy dark:text-white">My Sales Pipeline</h2>
               <span class="rounded-full bg-accent/10 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-accentDark dark:text-accent">Live</span>
             </div>
 
-            <ul class="mt-6 space-y-4">
+            <ul class="mt-5 space-y-3.5 sm:mt-6 sm:space-y-4">
               <li>
-                <div class="flex items-center justify-between text-sm">
+                <div class="flex items-center justify-between gap-2 text-sm">
                   <span class="font-medium text-navy dark:text-slate-200">Prospecting</span>
-                  <span class="text-xs font-semibold text-ink dark:text-slate-400">4–5 / mo</span>
+                  <span class="shrink-0 text-xs font-semibold text-ink dark:text-slate-400">4–5 / mo</span>
                 </div>
                 <div class="mt-2 h-2 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
                   <div class="bar-fill h-2 rounded-full bg-gradient-to-r from-navy to-navyLight dark:from-slate-300 dark:to-white" style="--w:100%"></div>
                 </div>
               </li>
               <li>
-                <div class="flex items-center justify-between text-sm">
+                <div class="flex items-center justify-between gap-2 text-sm">
                   <span class="font-medium text-navy dark:text-slate-200">Qualification</span>
-                  <span class="text-xs font-semibold text-ink dark:text-slate-400">Discovery</span>
+                  <span class="shrink-0 text-xs font-semibold text-ink dark:text-slate-400">Discovery</span>
                 </div>
                 <div class="mt-2 h-2 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
                   <div class="bar-fill h-2 rounded-full bg-gradient-to-r from-navy to-navyLight dark:from-slate-300 dark:to-white" style="--w:82%"></div>
                 </div>
               </li>
               <li>
-                <div class="flex items-center justify-between text-sm">
+                <div class="flex items-center justify-between gap-2 text-sm">
                   <span class="font-medium text-navy dark:text-slate-200">Consultation</span>
-                  <span class="text-xs font-semibold text-ink dark:text-slate-400">Proposal</span>
+                  <span class="shrink-0 text-xs font-semibold text-ink dark:text-slate-400">Proposal</span>
                 </div>
                 <div class="mt-2 h-2 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
                   <div class="bar-fill h-2 rounded-full bg-gradient-to-r from-navyLight to-accentDark" style="--w:64%"></div>
                 </div>
               </li>
               <li>
-                <div class="flex items-center justify-between text-sm">
+                <div class="flex items-center justify-between gap-2 text-sm">
                   <span class="font-medium text-navy dark:text-slate-200">Negotiation</span>
-                  <span class="text-xs font-semibold text-ink dark:text-slate-400">Quotation</span>
+                  <span class="shrink-0 text-xs font-semibold text-ink dark:text-slate-400">Quotation</span>
                 </div>
                 <div class="mt-2 h-2 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
                   <div class="bar-fill h-2 rounded-full bg-gradient-to-r from-accentDark to-accent" style="--w:46%"></div>
                 </div>
               </li>
               <li>
-                <div class="flex items-center justify-between text-sm">
+                <div class="flex items-center justify-between gap-2 text-sm">
                   <span class="font-medium text-navy dark:text-slate-200">Closed Won</span>
-                  <span class="text-xs font-semibold text-accentDark dark:text-accent">₹50K–₹1L</span>
+                  <span class="shrink-0 text-xs font-semibold text-accentDark dark:text-accent">₹50K–₹1L</span>
                 </div>
                 <div class="mt-2 h-2 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
                   <div class="bar-fill h-2 rounded-full bg-gradient-to-r from-accent to-accentDark" style="--w:28%"></div>
@@ -491,14 +530,14 @@
               </li>
             </ul>
 
-            <div class="mt-7 flex items-center gap-3 rounded-2xl bg-mist p-4 dark:bg-slate-800">
+            <div class="mt-6 flex items-start gap-3 rounded-2xl bg-mist p-3.5 dark:bg-slate-800 sm:mt-7 sm:items-center sm:p-4">
               <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-navy text-accent dark:bg-slate-700">
                 <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M3 17l6-6 4 4 7-7" />
                   <path stroke-linecap="round" stroke-linejoin="round" d="M14 8h6v6" />
                 </svg>
               </span>
-              <p class="text-sm leading-snug text-ink dark:text-slate-300">
+              <p class="text-[13px] leading-snug text-ink dark:text-slate-300 sm:text-sm">
                 <strong class="font-semibold text-navy dark:text-white">Full-cycle ownership</strong> — from first cold email to signed deal and onboarding.
               </p>
             </div>
@@ -510,28 +549,28 @@
   </section>
 
   <!-- ==================== SKILLS ==================== -->
-  <section id="skills" class="scroll-mt-28 bg-white py-20 transition-colors duration-300 dark:bg-slate-900 sm:py-24">
+  <section id="skills" class="scroll-mt-24 bg-white py-14 transition-colors duration-300 dark:bg-slate-900 sm:scroll-mt-28 sm:py-24">
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
 
       <div class="reveal mx-auto max-w-2xl text-center">
         <span class="text-xs font-bold uppercase tracking-[0.18em] text-accentDark dark:text-accent">The Sales Toolkit</span>
-        <h2 class="mt-3 font-display text-3xl font-bold tracking-tight text-navy dark:text-white sm:text-4xl">My Arsenal</h2>
-        <p class="mt-4 text-base leading-relaxed text-ink dark:text-slate-300">
+        <h2 class="mt-3 font-display text-2xl font-bold tracking-tight text-navy dark:text-white sm:text-4xl">My Arsenal</h2>
+        <p class="mt-3 text-[15px] leading-relaxed text-ink dark:text-slate-300 sm:mt-4 sm:text-base">
           Everything I need to find the right buyer, start the conversation and get the signature.
         </p>
       </div>
 
-      <div class="mt-14 grid gap-6 md:grid-cols-3">
+      <div class="mt-10 grid gap-5 sm:mt-14 sm:gap-6 md:grid-cols-3">
 
-        <article class="reveal group rounded-2xl border border-slate-100 bg-mist p-7 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-accent/40 hover:bg-white hover:shadow-cardHover dark:border-slate-800 dark:bg-slate-950 dark:hover:border-accent/50 dark:hover:bg-slate-800">
+        <article class="reveal group rounded-2xl border border-slate-100 bg-mist p-6 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-accent/40 hover:bg-white hover:shadow-cardHover dark:border-slate-800 dark:bg-slate-950 dark:hover:border-accent/50 dark:hover:bg-slate-800 sm:p-7">
           <span class="grid h-12 w-12 place-items-center rounded-xl bg-navy text-accent transition-transform duration-300 group-hover:scale-110 dark:bg-slate-800">
             <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
               <circle cx="11" cy="11" r="7" /><path stroke-linecap="round" d="M20 20l-3.5-3.5" />
             </svg>
           </span>
-          <h3 class="mt-5 font-display text-lg font-semibold text-navy dark:text-white">Hunting</h3>
+          <h3 class="mt-4 font-display text-lg font-semibold text-navy dark:text-white sm:mt-5">Hunting</h3>
           <p class="mt-1 text-xs font-semibold uppercase tracking-wider text-accentDark dark:text-accent">Lead Generation</p>
-          <ul class="mt-5 space-y-2.5 text-sm leading-relaxed dark:text-slate-300">
+          <ul class="mt-4 space-y-2.5 text-sm leading-relaxed dark:text-slate-300 sm:mt-5">
             <li class="flex gap-2.5"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>B2B outbound prospecting</li>
             <li class="flex gap-2.5"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>Cold email outreach &amp; sequencing</li>
             <li class="flex gap-2.5"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>Cold calling &amp; first-touch messaging</li>
@@ -540,7 +579,7 @@
           </ul>
         </article>
 
-        <article class="reveal group rounded-2xl border border-slate-100 bg-mist p-7 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-accent/40 hover:bg-white hover:shadow-cardHover dark:border-slate-800 dark:bg-slate-950 dark:hover:border-accent/50 dark:hover:bg-slate-800">
+        <article class="reveal group rounded-2xl border border-slate-100 bg-mist p-6 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-accent/40 hover:bg-white hover:shadow-cardHover dark:border-slate-800 dark:bg-slate-950 dark:hover:border-accent/50 dark:hover:bg-slate-800 sm:p-7">
           <span class="grid h-12 w-12 place-items-center rounded-xl bg-navy text-accent transition-transform duration-300 group-hover:scale-110 dark:bg-slate-800">
             <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2" />
@@ -548,9 +587,9 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" />
             </svg>
           </span>
-          <h3 class="mt-5 font-display text-lg font-semibold text-navy dark:text-white">Farming</h3>
+          <h3 class="mt-4 font-display text-lg font-semibold text-navy dark:text-white sm:mt-5">Farming</h3>
           <p class="mt-1 text-xs font-semibold uppercase tracking-wider text-accentDark dark:text-accent">Client Relationship Management</p>
-          <ul class="mt-5 space-y-2.5 text-sm leading-relaxed dark:text-slate-300">
+          <ul class="mt-4 space-y-2.5 text-sm leading-relaxed dark:text-slate-300 sm:mt-5">
             <li class="flex gap-2.5"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>First-level service consultation</li>
             <li class="flex gap-2.5"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>Account management &amp; onboarding</li>
             <li class="flex gap-2.5"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>Relationship building &amp; retention</li>
@@ -559,16 +598,16 @@
           </ul>
         </article>
 
-        <article class="reveal group rounded-2xl border border-slate-100 bg-mist p-7 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-accent/40 hover:bg-white hover:shadow-cardHover dark:border-slate-800 dark:bg-slate-950 dark:hover:border-accent/50 dark:hover:bg-slate-800">
+        <article class="reveal group rounded-2xl border border-slate-100 bg-mist p-6 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-accent/40 hover:bg-white hover:shadow-cardHover dark:border-slate-800 dark:bg-slate-950 dark:hover:border-accent/50 dark:hover:bg-slate-800 sm:p-7">
           <span class="grid h-12 w-12 place-items-center rounded-xl bg-navy text-accent transition-transform duration-300 group-hover:scale-110 dark:bg-slate-800">
             <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4" />
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 4v5c0 4.5-3 8.2-7 9-4-0.8-7-4.5-7-9V7l7-4z" />
             </svg>
           </span>
-          <h3 class="mt-5 font-display text-lg font-semibold text-navy dark:text-white">Closing</h3>
+          <h3 class="mt-4 font-display text-lg font-semibold text-navy dark:text-white sm:mt-5">Closing</h3>
           <p class="mt-1 text-xs font-semibold uppercase tracking-wider text-accentDark dark:text-accent">Business Development</p>
-          <ul class="mt-5 space-y-2.5 text-sm leading-relaxed dark:text-slate-300">
+          <ul class="mt-4 space-y-2.5 text-sm leading-relaxed dark:text-slate-300 sm:mt-5">
             <li class="flex gap-2.5"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>Full-cycle sales ownership</li>
             <li class="flex gap-2.5"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>Discovery calls &amp; requirement mapping</li>
             <li class="flex gap-2.5"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>Proposal &amp; quotation preparation</li>
@@ -578,20 +617,20 @@
         </article>
       </div>
 
-      <div class="reveal mt-6 rounded-2xl border border-slate-100 bg-navy p-7 shadow-card dark:border-slate-800 dark:bg-slate-800 sm:p-8">
-        <div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+      <div class="reveal mt-5 rounded-2xl border border-slate-100 bg-navy p-5 shadow-card dark:border-slate-800 dark:bg-slate-800 sm:mt-6 sm:p-8">
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
           <div>
-            <h3 class="font-display text-lg font-semibold text-white">Tools &amp; Market Research</h3>
-            <p class="mt-1 text-sm text-slate-300">The stack I use daily to research, reach and record.</p>
+            <h3 class="font-display text-base font-semibold text-white sm:text-lg">Tools &amp; Market Research</h3>
+            <p class="mt-1 text-[13px] text-slate-300 sm:text-sm">The stack I use daily to research, reach and record.</p>
           </div>
-          <ul class="flex flex-wrap gap-2">
-            <li class="rounded-lg bg-white/10 px-3 py-1.5 text-xs font-semibold text-white">LinkedIn Sales Navigator</li>
-            <li class="rounded-lg bg-white/10 px-3 py-1.5 text-xs font-semibold text-white">Lusha</li>
-            <li class="rounded-lg bg-white/10 px-3 py-1.5 text-xs font-semibold text-white">Internal CRM</li>
-            <li class="rounded-lg bg-white/10 px-3 py-1.5 text-xs font-semibold text-white">MS Excel</li>
-            <li class="rounded-lg bg-white/10 px-3 py-1.5 text-xs font-semibold text-white">PowerPoint</li>
-            <li class="rounded-lg bg-white/10 px-3 py-1.5 text-xs font-semibold text-white">MS Access</li>
-            <li class="rounded-lg bg-accent/20 px-3 py-1.5 text-xs font-semibold text-accent">Industry &amp; Competitor Research</li>
+          <ul class="flex flex-wrap gap-1.5 sm:gap-2">
+            <li class="rounded-lg bg-white/10 px-2.5 py-1.5 text-[11px] font-semibold text-white sm:px-3 sm:text-xs">LinkedIn Sales Navigator</li>
+            <li class="rounded-lg bg-white/10 px-2.5 py-1.5 text-[11px] font-semibold text-white sm:px-3 sm:text-xs">Lusha</li>
+            <li class="rounded-lg bg-white/10 px-2.5 py-1.5 text-[11px] font-semibold text-white sm:px-3 sm:text-xs">Internal CRM</li>
+            <li class="rounded-lg bg-white/10 px-2.5 py-1.5 text-[11px] font-semibold text-white sm:px-3 sm:text-xs">MS Excel</li>
+            <li class="rounded-lg bg-white/10 px-2.5 py-1.5 text-[11px] font-semibold text-white sm:px-3 sm:text-xs">PowerPoint</li>
+            <li class="rounded-lg bg-white/10 px-2.5 py-1.5 text-[11px] font-semibold text-white sm:px-3 sm:text-xs">MS Access</li>
+            <li class="rounded-lg bg-accent/20 px-2.5 py-1.5 text-[11px] font-semibold text-accent sm:px-3 sm:text-xs">Industry &amp; Competitor Research</li>
           </ul>
         </div>
       </div>
@@ -600,96 +639,99 @@
   </section>
 
   <!-- ==================== EXPERIENCE ==================== -->
-  <section id="experience" class="scroll-mt-28 py-20 transition-colors duration-300 sm:py-24">
+  <section id="experience" class="scroll-mt-24 py-14 transition-colors duration-300 sm:scroll-mt-28 sm:py-24">
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
 
       <div class="reveal mx-auto max-w-2xl text-center">
         <span class="text-xs font-bold uppercase tracking-[0.18em] text-accentDark dark:text-accent">Track Record</span>
-        <h2 class="mt-3 font-display text-3xl font-bold tracking-tight text-navy dark:text-white sm:text-4xl">Proven Revenue Impact</h2>
-        <p class="mt-4 text-base leading-relaxed text-ink dark:text-slate-300">
+        <h2 class="mt-3 font-display text-2xl font-bold tracking-tight text-navy dark:text-white sm:text-4xl">Proven Revenue Impact</h2>
+        <p class="mt-3 text-[15px] leading-relaxed text-ink dark:text-slate-300 sm:mt-4 sm:text-base">
           Three roles, one consistent outcome: more qualified pipeline and more closed revenue.
         </p>
       </div>
 
-      <div class="relative mt-16 border-l-2 border-slate-200 pl-8 dark:border-slate-800 sm:pl-10">
+      <div class="relative mt-10 border-l-2 border-slate-200 pl-6 dark:border-slate-800 sm:mt-16 sm:pl-10">
 
-        <article class="reveal relative pb-14">
-          <span class="absolute -left-[40px] top-2 h-4 w-4 rounded-full bg-accent ring-4 ring-accent/20 sm:-left-[48px]" aria-hidden="true"></span>
+        <!-- Role 1 -->
+        <article class="reveal relative pb-10 sm:pb-14">
+          <span class="absolute -left-[32px] top-2 h-4 w-4 rounded-full bg-accent ring-4 ring-accent/20 sm:-left-[48px]" aria-hidden="true"></span>
 
-          <div class="rounded-2xl border border-slate-100 bg-white p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-cardHover dark:border-slate-800 dark:bg-slate-900 sm:p-7">
-            <div class="flex flex-wrap items-start justify-between gap-3">
-              <div>
-                <h3 class="font-display text-lg font-bold text-navy dark:text-white sm:text-xl">Business Development Lead</h3>
-                <p class="mt-1 text-sm font-semibold text-accentDark dark:text-accent">Turain Software Pvt. Ltd. · Bengaluru</p>
+          <div class="rounded-2xl border border-slate-100 bg-white p-5 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-cardHover dark:border-slate-800 dark:bg-slate-900 sm:p-7">
+            <div class="flex flex-wrap items-start justify-between gap-2 sm:gap-3">
+              <div class="min-w-0">
+                <h3 class="font-display text-base font-bold text-navy dark:text-white sm:text-xl">Business Development Lead</h3>
+                <p class="mt-1 text-[13px] font-semibold text-accentDark dark:text-accent sm:text-sm">Turain Software Pvt. Ltd. · Bengaluru</p>
               </div>
-              <span class="rounded-lg bg-navy/5 px-3 py-1.5 text-xs font-semibold text-navy dark:bg-slate-800 dark:text-slate-200">Apr 2026 – Aug 2026</span>
+              <span class="shrink-0 rounded-lg bg-navy/5 px-2.5 py-1.5 text-[11px] font-semibold text-navy dark:bg-slate-800 dark:text-slate-200 sm:px-3 sm:text-xs">Apr 2026 – Aug 2026</span>
             </div>
 
-            <ul class="mt-5 space-y-2.5 text-sm leading-relaxed dark:text-slate-300">
-              <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>Managed the complete sales cycle for <strong class="font-semibold text-navy dark:text-white">CPaaS, SaaS and Digital Marketing</strong> solutions — from prospect identification to deal closure.</li>
-              <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>Researched and reached out to <strong class="font-semibold text-navy dark:text-white">4–5 qualified prospects monthly</strong> via cold email and cold calling, with messaging customised using LinkedIn Sales Navigator and Lusha insights.</li>
-              <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>Ran discovery calls and client meetings to map requirements, then prepared proposals and quotations with support from technical teams.</li>
-              <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>Negotiated and closed deals averaging <strong class="font-semibold text-navy dark:text-white">₹50,000 – ₹1,00,000</strong>, and managed client relationships post-closure including onboarding.</li>
-              <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>Maintained sales activity tracking and built a steady pipeline to meet revenue and customer acquisition targets.</li>
+            <ul class="mt-4 space-y-2.5 text-[13px] leading-relaxed dark:text-slate-300 sm:mt-5 sm:text-sm">
+              <li class="flex gap-2.5 sm:gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>Managed the complete sales cycle for <strong class="font-semibold text-navy dark:text-white">CPaaS, SaaS and Digital Marketing</strong> solutions — from prospect identification to deal closure.</li>
+              <li class="flex gap-2.5 sm:gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>Researched and reached out to <strong class="font-semibold text-navy dark:text-white">4–5 qualified prospects monthly</strong> via cold email and cold calling, with messaging customised using LinkedIn Sales Navigator and Lusha insights.</li>
+              <li class="flex gap-2.5 sm:gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>Ran discovery calls and client meetings to map requirements, then prepared proposals and quotations with support from technical teams.</li>
+              <li class="flex gap-2.5 sm:gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>Negotiated and closed deals averaging <strong class="font-semibold text-navy dark:text-white">₹50,000 – ₹1,00,000</strong>, and managed client relationships post-closure including onboarding.</li>
+              <li class="flex gap-2.5 sm:gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>Maintained sales activity tracking and built a steady pipeline to meet revenue and customer acquisition targets.</li>
             </ul>
 
-            <div class="mt-6 flex flex-wrap gap-2">
-              <span class="rounded-lg bg-accent/10 px-3 py-1.5 text-xs font-semibold text-accentDark dark:text-accent">Full-Cycle Sales</span>
-              <span class="rounded-lg bg-accent/10 px-3 py-1.5 text-xs font-semibold text-accentDark dark:text-accent">CPaaS · SaaS</span>
-              <span class="rounded-lg bg-accent/10 px-3 py-1.5 text-xs font-semibold text-accentDark dark:text-accent">₹50K–₹1L Deals</span>
+            <div class="mt-5 flex flex-wrap gap-1.5 sm:mt-6 sm:gap-2">
+              <span class="rounded-lg bg-accent/10 px-2.5 py-1.5 text-[11px] font-semibold text-accentDark dark:text-accent sm:px-3 sm:text-xs">Full-Cycle Sales</span>
+              <span class="rounded-lg bg-accent/10 px-2.5 py-1.5 text-[11px] font-semibold text-accentDark dark:text-accent sm:px-3 sm:text-xs">CPaaS · SaaS</span>
+              <span class="rounded-lg bg-accent/10 px-2.5 py-1.5 text-[11px] font-semibold text-accentDark dark:text-accent sm:px-3 sm:text-xs">₹50K–₹1L Deals</span>
             </div>
           </div>
         </article>
 
-        <article class="reveal relative pb-14">
-          <span class="absolute -left-[40px] top-2 h-4 w-4 rounded-full bg-navy ring-4 ring-navy/15 dark:bg-slate-400 dark:ring-slate-400/20 sm:-left-[48px]" aria-hidden="true"></span>
+        <!-- Role 2 -->
+        <article class="reveal relative pb-10 sm:pb-14">
+          <span class="absolute -left-[32px] top-2 h-4 w-4 rounded-full bg-navy ring-4 ring-navy/15 dark:bg-slate-400 dark:ring-slate-400/20 sm:-left-[48px]" aria-hidden="true"></span>
 
-          <div class="rounded-2xl border border-slate-100 bg-white p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-cardHover dark:border-slate-800 dark:bg-slate-900 sm:p-7">
-            <div class="flex flex-wrap items-start justify-between gap-3">
-              <div>
-                <h3 class="font-display text-lg font-bold text-navy dark:text-white sm:text-xl">Client Account Executive</h3>
-                <p class="mt-1 text-sm font-semibold text-accentDark dark:text-accent">Covalense Digital Solutions · Bengaluru</p>
+          <div class="rounded-2xl border border-slate-100 bg-white p-5 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-cardHover dark:border-slate-800 dark:bg-slate-900 sm:p-7">
+            <div class="flex flex-wrap items-start justify-between gap-2 sm:gap-3">
+              <div class="min-w-0">
+                <h3 class="font-display text-base font-bold text-navy dark:text-white sm:text-xl">Client Account Executive</h3>
+                <p class="mt-1 text-[13px] font-semibold text-accentDark dark:text-accent sm:text-sm">Covalense Digital Solutions · Bengaluru</p>
               </div>
-              <span class="rounded-lg bg-navy/5 px-3 py-1.5 text-xs font-semibold text-navy dark:bg-slate-800 dark:text-slate-200">Nov 2024 – Jun 2025</span>
+              <span class="shrink-0 rounded-lg bg-navy/5 px-2.5 py-1.5 text-[11px] font-semibold text-navy dark:bg-slate-800 dark:text-slate-200 sm:px-3 sm:text-xs">Nov 2024 – Jun 2025</span>
             </div>
 
-            <ul class="mt-5 space-y-2.5 text-sm leading-relaxed dark:text-slate-300">
-              <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>Generated <strong class="font-semibold text-navy dark:text-white">3–5 qualified B2B leads monthly</strong> via cold calling and cold email, using LinkedIn Sales Navigator and Lusha for prospect research.</li>
-              <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>Provided first-level service consultation to prospects, addressing initial queries and guiding them toward the right solution.</li>
-              <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>Improved <strong class="font-semibold text-navy dark:text-white">MQL-to-SQL conversion to 5–10%</strong> through refined qualification criteria and tighter sales alignment.</li>
-              <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>Maintained lead and pipeline data in internal CRM and built targeted prospect lists for the <strong class="font-semibold text-navy dark:text-white">APAC and Middle East</strong> regions.</li>
+            <ul class="mt-4 space-y-2.5 text-[13px] leading-relaxed dark:text-slate-300 sm:mt-5 sm:text-sm">
+              <li class="flex gap-2.5 sm:gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>Generated <strong class="font-semibold text-navy dark:text-white">3–5 qualified B2B leads monthly</strong> via cold calling and cold email, using LinkedIn Sales Navigator and Lusha for prospect research.</li>
+              <li class="flex gap-2.5 sm:gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>Provided first-level service consultation to prospects, addressing initial queries and guiding them toward the right solution.</li>
+              <li class="flex gap-2.5 sm:gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>Improved <strong class="font-semibold text-navy dark:text-white">MQL-to-SQL conversion to 5–10%</strong> through refined qualification criteria and tighter sales alignment.</li>
+              <li class="flex gap-2.5 sm:gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>Maintained lead and pipeline data in internal CRM and built targeted prospect lists for the <strong class="font-semibold text-navy dark:text-white">APAC and Middle East</strong> regions.</li>
             </ul>
 
-            <div class="mt-6 flex flex-wrap gap-2">
-              <span class="rounded-lg bg-accent/10 px-3 py-1.5 text-xs font-semibold text-accentDark dark:text-accent">MQL → SQL 5–10%</span>
-              <span class="rounded-lg bg-accent/10 px-3 py-1.5 text-xs font-semibold text-accentDark dark:text-accent">APAC &amp; Middle East</span>
-              <span class="rounded-lg bg-accent/10 px-3 py-1.5 text-xs font-semibold text-accentDark dark:text-accent">CRM &amp; Pipeline</span>
+            <div class="mt-5 flex flex-wrap gap-1.5 sm:mt-6 sm:gap-2">
+              <span class="rounded-lg bg-accent/10 px-2.5 py-1.5 text-[11px] font-semibold text-accentDark dark:text-accent sm:px-3 sm:text-xs">MQL → SQL 5–10%</span>
+              <span class="rounded-lg bg-accent/10 px-2.5 py-1.5 text-[11px] font-semibold text-accentDark dark:text-accent sm:px-3 sm:text-xs">APAC &amp; Middle East</span>
+              <span class="rounded-lg bg-accent/10 px-2.5 py-1.5 text-[11px] font-semibold text-accentDark dark:text-accent sm:px-3 sm:text-xs">CRM &amp; Pipeline</span>
             </div>
           </div>
         </article>
 
+        <!-- Role 3 -->
         <article class="reveal relative">
-          <span class="absolute -left-[40px] top-2 h-4 w-4 rounded-full bg-navy ring-4 ring-navy/15 dark:bg-slate-400 dark:ring-slate-400/20 sm:-left-[48px]" aria-hidden="true"></span>
+          <span class="absolute -left-[32px] top-2 h-4 w-4 rounded-full bg-navy ring-4 ring-navy/15 dark:bg-slate-400 dark:ring-slate-400/20 sm:-left-[48px]" aria-hidden="true"></span>
 
-          <div class="rounded-2xl border border-slate-100 bg-white p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-cardHover dark:border-slate-800 dark:bg-slate-900 sm:p-7">
-            <div class="flex flex-wrap items-start justify-between gap-3">
-              <div>
-                <h3 class="font-display text-lg font-bold text-navy dark:text-white sm:text-xl">Market Research Executive</h3>
-                <p class="mt-1 text-sm font-semibold text-accentDark dark:text-accent">Trigent Software Pvt. Ltd. · Bengaluru</p>
+          <div class="rounded-2xl border border-slate-100 bg-white p-5 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-cardHover dark:border-slate-800 dark:bg-slate-900 sm:p-7">
+            <div class="flex flex-wrap items-start justify-between gap-2 sm:gap-3">
+              <div class="min-w-0">
+                <h3 class="font-display text-base font-bold text-navy dark:text-white sm:text-xl">Market Research Executive</h3>
+                <p class="mt-1 text-[13px] font-semibold text-accentDark dark:text-accent sm:text-sm">Trigent Software Pvt. Ltd. · Bengaluru</p>
               </div>
-              <span class="rounded-lg bg-navy/5 px-3 py-1.5 text-xs font-semibold text-navy dark:bg-slate-800 dark:text-slate-200">Jan 2023 – Sep 2024</span>
+              <span class="shrink-0 rounded-lg bg-navy/5 px-2.5 py-1.5 text-[11px] font-semibold text-navy dark:bg-slate-800 dark:text-slate-200 sm:px-3 sm:text-xs">Jan 2023 – Sep 2024</span>
             </div>
 
-            <ul class="mt-5 space-y-2.5 text-sm leading-relaxed dark:text-slate-300">
-              <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>Generated <strong class="font-semibold text-navy dark:text-white">5–10 qualified B2B leads monthly</strong> via cold email outreach, using LinkedIn Sales Navigator to source contacts.</li>
-              <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>Improved <strong class="font-semibold text-navy dark:text-white">MQL-to-SQL conversion to 10–20%</strong> through refined qualification criteria and sales alignment.</li>
-              <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>Maintained lead data in MS Access and built targeted prospect lists for the <strong class="font-semibold text-navy dark:text-white">US market</strong>.</li>
+            <ul class="mt-4 space-y-2.5 text-[13px] leading-relaxed dark:text-slate-300 sm:mt-5 sm:text-sm">
+              <li class="flex gap-2.5 sm:gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>Generated <strong class="font-semibold text-navy dark:text-white">5–10 qualified B2B leads monthly</strong> via cold email outreach, using LinkedIn Sales Navigator to source contacts.</li>
+              <li class="flex gap-2.5 sm:gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>Improved <strong class="font-semibold text-navy dark:text-white">MQL-to-SQL conversion to 10–20%</strong> through refined qualification criteria and sales alignment.</li>
+              <li class="flex gap-2.5 sm:gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>Maintained lead data in MS Access and built targeted prospect lists for the <strong class="font-semibold text-navy dark:text-white">US market</strong>.</li>
             </ul>
 
-            <div class="mt-6 flex flex-wrap gap-2">
-              <span class="rounded-lg bg-accent/10 px-3 py-1.5 text-xs font-semibold text-accentDark dark:text-accent">MQL → SQL 10–20%</span>
-              <span class="rounded-lg bg-accent/10 px-3 py-1.5 text-xs font-semibold text-accentDark dark:text-accent">US Market</span>
-              <span class="rounded-lg bg-accent/10 px-3 py-1.5 text-xs font-semibold text-accentDark dark:text-accent">5–10 Leads / Month</span>
+            <div class="mt-5 flex flex-wrap gap-1.5 sm:mt-6 sm:gap-2">
+              <span class="rounded-lg bg-accent/10 px-2.5 py-1.5 text-[11px] font-semibold text-accentDark dark:text-accent sm:px-3 sm:text-xs">MQL → SQL 10–20%</span>
+              <span class="rounded-lg bg-accent/10 px-2.5 py-1.5 text-[11px] font-semibold text-accentDark dark:text-accent sm:px-3 sm:text-xs">US Market</span>
+              <span class="rounded-lg bg-accent/10 px-2.5 py-1.5 text-[11px] font-semibold text-accentDark dark:text-accent sm:px-3 sm:text-xs">5–10 Leads / Month</span>
             </div>
           </div>
         </article>
@@ -699,49 +741,49 @@
   </section>
 
   <!-- ==================== EDUCATION & CERTIFICATIONS ==================== -->
-  <section id="education" class="scroll-mt-28 bg-white py-20 transition-colors duration-300 dark:bg-slate-900 sm:py-24">
+  <section id="education" class="scroll-mt-24 bg-white py-14 transition-colors duration-300 dark:bg-slate-900 sm:scroll-mt-28 sm:py-24">
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
 
       <div class="reveal mx-auto max-w-2xl text-center">
         <span class="text-xs font-bold uppercase tracking-[0.18em] text-accentDark dark:text-accent">Foundation</span>
-        <h2 class="mt-3 font-display text-3xl font-bold tracking-tight text-navy dark:text-white sm:text-4xl">Education &amp; Continuous Learning</h2>
-        <p class="mt-4 text-base leading-relaxed text-ink dark:text-slate-300">
+        <h2 class="mt-3 font-display text-2xl font-bold tracking-tight text-navy dark:text-white sm:text-4xl">Education &amp; Continuous Learning</h2>
+        <p class="mt-3 text-[15px] leading-relaxed text-ink dark:text-slate-300 sm:mt-4 sm:text-base">
           A marketing foundation, sharpened by certifications in B2B go-to-market and modern AI tooling.
         </p>
       </div>
 
-      <div class="mt-14 grid gap-6 md:grid-cols-2">
+      <div class="mt-10 grid gap-5 sm:mt-14 sm:gap-6 md:grid-cols-2">
 
-        <article class="reveal group flex gap-5 rounded-2xl border border-slate-100 bg-mist p-7 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-accent/40 hover:bg-white hover:shadow-cardHover dark:border-slate-800 dark:bg-slate-950 dark:hover:border-accent/50 dark:hover:bg-slate-800">
-          <span class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-navy text-accent transition-transform duration-300 group-hover:scale-110 dark:bg-slate-800">
-            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+        <article class="reveal group flex gap-4 rounded-2xl border border-slate-100 bg-mist p-5 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-accent/40 hover:bg-white hover:shadow-cardHover dark:border-slate-800 dark:bg-slate-950 dark:hover:border-accent/50 dark:hover:bg-slate-800 sm:gap-5 sm:p-7">
+          <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-navy text-accent transition-transform duration-300 group-hover:scale-110 dark:bg-slate-800 sm:h-12 sm:w-12">
+            <svg class="h-5 w-5 sm:h-6 sm:w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M22 10L12 5 2 10l10 5 10-5z" />
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5" />
             </svg>
           </span>
-          <div>
-            <h3 class="font-display text-lg font-semibold text-navy dark:text-white">MBA in Marketing</h3>
-            <p class="mt-1 text-sm font-medium text-ink dark:text-slate-300">Surana College, Bengaluru</p>
-            <span class="mt-3 inline-block rounded-lg bg-navy/5 px-3 py-1.5 text-xs font-semibold text-navy dark:bg-slate-800 dark:text-slate-200">2020 – 2022</span>
+          <div class="min-w-0">
+            <h3 class="font-display text-base font-semibold text-navy dark:text-white sm:text-lg">MBA in Marketing</h3>
+            <p class="mt-1 text-[13px] font-medium text-ink dark:text-slate-300 sm:text-sm">Surana College, Bengaluru</p>
+            <span class="mt-2.5 inline-block rounded-lg bg-navy/5 px-2.5 py-1.5 text-[11px] font-semibold text-navy dark:bg-slate-800 dark:text-slate-200 sm:mt-3 sm:px-3 sm:text-xs">2020 – 2022</span>
           </div>
         </article>
 
-        <article class="reveal group flex gap-5 rounded-2xl border border-slate-100 bg-mist p-7 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-accent/40 hover:bg-white hover:shadow-cardHover dark:border-slate-800 dark:bg-slate-950 dark:hover:border-accent/50 dark:hover:bg-slate-800">
-          <span class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-navy text-accent transition-transform duration-300 group-hover:scale-110 dark:bg-slate-800">
-            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+        <article class="reveal group flex gap-4 rounded-2xl border border-slate-100 bg-mist p-5 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-accent/40 hover:bg-white hover:shadow-cardHover dark:border-slate-800 dark:bg-slate-950 dark:hover:border-accent/50 dark:hover:bg-slate-800 sm:gap-5 sm:p-7">
+          <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-navy text-accent transition-transform duration-300 group-hover:scale-110 dark:bg-slate-800 sm:h-12 sm:w-12">
+            <svg class="h-5 w-5 sm:h-6 sm:w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 19.5A2.5 2.5 0 016.5 17H20" />
               <path stroke-linecap="round" stroke-linejoin="round" d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
             </svg>
           </span>
-          <div>
-            <h3 class="font-display text-lg font-semibold text-navy dark:text-white">B.Com</h3>
-            <p class="mt-1 text-sm font-medium text-ink dark:text-slate-300">VET First Grade College, Bengaluru</p>
-            <span class="mt-3 inline-block rounded-lg bg-navy/5 px-3 py-1.5 text-xs font-semibold text-navy dark:bg-slate-800 dark:text-slate-200">2016 – 2019</span>
+          <div class="min-w-0">
+            <h3 class="font-display text-base font-semibold text-navy dark:text-white sm:text-lg">B.Com</h3>
+            <p class="mt-1 text-[13px] font-medium text-ink dark:text-slate-300 sm:text-sm">VET First Grade College, Bengaluru</p>
+            <span class="mt-2.5 inline-block rounded-lg bg-navy/5 px-2.5 py-1.5 text-[11px] font-semibold text-navy dark:bg-slate-800 dark:text-slate-200 sm:mt-3 sm:px-3 sm:text-xs">2016 – 2019</span>
           </div>
         </article>
       </div>
 
-      <div class="reveal mt-10 rounded-2xl border border-slate-100 bg-mist p-7 shadow-card dark:border-slate-800 dark:bg-slate-950 sm:p-8">
+      <div class="reveal mt-8 rounded-2xl border border-slate-100 bg-mist p-5 shadow-card dark:border-slate-800 dark:bg-slate-950 sm:mt-10 sm:p-8">
         <div class="flex items-center gap-3">
           <span class="grid h-10 w-10 place-items-center rounded-xl bg-accent/15 text-accentDark dark:text-accent">
             <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
@@ -749,17 +791,17 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M8.5 12.5L7 22l5-3 5 3-1.5-9.5" />
             </svg>
           </span>
-          <h3 class="font-display text-lg font-semibold text-navy dark:text-white">Certifications</h3>
+          <h3 class="font-display text-base font-semibold text-navy dark:text-white sm:text-lg">Certifications</h3>
         </div>
 
-        <ul class="mt-6 flex flex-wrap gap-2.5">
-          <li class="rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-navy transition hover:border-accent hover:text-accentDark dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-accent dark:hover:text-accent">Sales Fundamentals</li>
-          <li class="rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-navy transition hover:border-accent hover:text-accentDark dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-accent dark:hover:text-accent">B2B Marketing Foundations</li>
-          <li class="rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-navy transition hover:border-accent hover:text-accentDark dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-accent dark:hover:text-accent">B2B Foundations: Content Marketing</li>
-          <li class="rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-navy transition hover:border-accent hover:text-accentDark dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-accent dark:hover:text-accent">Create a Go-to-Market Plan</li>
-          <li class="rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-navy transition hover:border-accent hover:text-accentDark dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-accent dark:hover:text-accent">Marketing: Customer Segmentation</li>
-          <li class="rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-navy transition hover:border-accent hover:text-accentDark dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-accent dark:hover:text-accent">Marketing Communications</li>
-          <li class="rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-navy transition hover:border-accent hover:text-accentDark dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-accent dark:hover:text-accent">Prompt Engineering with ChatGPT</li>
+        <ul class="mt-5 flex flex-wrap gap-2 sm:mt-6 sm:gap-2.5">
+          <li class="rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-[11px] font-semibold text-navy transition hover:border-accent hover:text-accentDark dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-accent dark:hover:text-accent sm:px-3.5 sm:py-2 sm:text-xs">Sales Fundamentals</li>
+          <li class="rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-[11px] font-semibold text-navy transition hover:border-accent hover:text-accentDark dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-accent dark:hover:text-accent sm:px-3.5 sm:py-2 sm:text-xs">B2B Marketing Foundations</li>
+          <li class="rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-[11px] font-semibold text-navy transition hover:border-accent hover:text-accentDark dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-accent dark:hover:text-accent sm:px-3.5 sm:py-2 sm:text-xs">B2B Foundations: Content Marketing</li>
+          <li class="rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-[11px] font-semibold text-navy transition hover:border-accent hover:text-accentDark dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-accent dark:hover:text-accent sm:px-3.5 sm:py-2 sm:text-xs">Create a Go-to-Market Plan</li>
+          <li class="rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-[11px] font-semibold text-navy transition hover:border-accent hover:text-accentDark dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-accent dark:hover:text-accent sm:px-3.5 sm:py-2 sm:text-xs">Marketing: Customer Segmentation</li>
+          <li class="rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-[11px] font-semibold text-navy transition hover:border-accent hover:text-accentDark dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-accent dark:hover:text-accent sm:px-3.5 sm:py-2 sm:text-xs">Marketing Communications</li>
+          <li class="rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-[11px] font-semibold text-navy transition hover:border-accent hover:text-accentDark dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-accent dark:hover:text-accent sm:px-3.5 sm:py-2 sm:text-xs">Prompt Engineering with ChatGPT</li>
         </ul>
       </div>
 
@@ -767,45 +809,45 @@
   </section>
 
   <!-- ==================== CONTACT / CTA ==================== -->
-  <section id="contact" class="scroll-mt-28 py-20 transition-colors duration-300 sm:py-24">
+  <section id="contact" class="scroll-mt-24 py-14 transition-colors duration-300 sm:scroll-mt-28 sm:py-24">
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
-      <div class="reveal relative overflow-hidden rounded-3xl bg-navy px-6 py-14 shadow-cardHover sm:px-12 sm:py-16 dark:ring-1 dark:ring-slate-800">
+      <div class="reveal relative overflow-hidden rounded-3xl bg-navy px-5 py-10 shadow-cardHover dark:ring-1 dark:ring-slate-800 sm:px-12 sm:py-16">
 
         <div class="pointer-events-none absolute inset-0" aria-hidden="true">
-          <div class="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-accent/20 blur-3xl"></div>
-          <div class="absolute -bottom-24 -left-16 h-72 w-72 rounded-full bg-accent/10 blur-3xl"></div>
+          <div class="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-accent/20 blur-3xl sm:h-64 sm:w-64"></div>
+          <div class="absolute -bottom-24 -left-16 h-56 w-56 rounded-full bg-accent/10 blur-3xl sm:h-72 sm:w-72"></div>
         </div>
 
         <div class="relative mx-auto max-w-2xl text-center">
-          <h2 class="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+          <h2 class="font-display text-2xl font-bold tracking-tight text-white sm:text-4xl">
             Ready to scale your revenue?
           </h2>
-          <p class="mt-4 text-base leading-relaxed text-slate-300 sm:text-lg">
+          <p class="mt-3 text-[15px] leading-relaxed text-slate-300 sm:mt-4 sm:text-lg">
             I'm open to Business Development and Sales roles across SaaS, CPaaS and IT services.
             Let's talk about how I can help your team hit its targets.
           </p>
 
           <!-- Contact detail row -->
-          <ul class="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-slate-300">
+          <ul class="mt-6 flex flex-col items-center gap-2.5 text-[13px] text-slate-300 sm:mt-8 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-6 sm:gap-y-3 sm:text-sm">
             <li>
               <a href="tel:+919066734707" class="inline-flex items-center gap-2 font-medium transition-colors hover:text-accent">
-                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
                 </svg>
                 +91-9066734707
               </a>
             </li>
-            <li>
-              <a href="mailto:dineshofficial7698@gmail.com" class="inline-flex items-center gap-2 font-medium transition-colors hover:text-accent">
-                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <li class="min-w-0">
+              <a href="mailto:dineshofficial7698@gmail.com" class="inline-flex min-w-0 items-center gap-2 font-medium transition-colors hover:text-accent">
+                <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                   <rect x="3" y="5" width="18" height="14" rx="2" />
                   <path stroke-linecap="round" stroke-linejoin="round" d="M3 7l9 6 9-6" />
                 </svg>
-                dineshofficial7698@gmail.com
+                <span class="break-safe">dineshofficial7698@gmail.com</span>
               </a>
             </li>
             <li class="inline-flex items-center gap-2 font-medium">
-              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-7-6.5-7-11a7 7 0 1114 0c0 4.5-7 11-7 11z" />
                 <circle cx="12" cy="10" r="2.5" />
               </svg>
@@ -813,9 +855,9 @@
             </li>
           </ul>
 
-          <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
+          <div class="mt-7 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center">
             <a href="mailto:dineshofficial7698@gmail.com?subject=Business%20Development%20Opportunity&body=Hi%20Dinesh%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20like%20to%20discuss%20an%20opportunity.%0A%0AThanks%2C"
-               class="inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3.5 text-sm font-bold text-navy shadow-card transition-all duration-300 hover:-translate-y-0.5 hover:bg-accentDark hover:text-white hover:shadow-cardHover">
+               class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3.5 text-sm font-bold text-navy shadow-card transition-all duration-300 hover:-translate-y-0.5 hover:bg-accentDark hover:text-white hover:shadow-cardHover sm:w-auto">
               <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                 <rect x="3" y="5" width="18" height="14" rx="2" />
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 7l9 6 9-6" />
@@ -824,15 +866,15 @@
             </a>
 
             <a href="https://www.linkedin.com/in/dinesh7698/" target="_blank" rel="noopener noreferrer me"
-               class="inline-flex items-center gap-2 rounded-xl border border-white/25 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/10">
+               class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/10 sm:w-auto">
               <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.3c0-1.27-.02-2.9-1.77-2.9-1.77 0-2.04 1.38-2.04 2.8V21h-4z" />
               </svg>
               LinkedIn
             </a>
 
-            <a href="https://drive.google.com/file/d/1y6jcrisOG4mxI-xOTOHS4JA0XvQxdRLQ/view?usp=drivesdk" download
-               class="inline-flex items-center gap-2 rounded-xl border border-white/25 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/10">
+            <a href="Dinesh-E-Resume-2026.pdf" download
+               class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/10 sm:w-auto">
               <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16" />
               </svg>
@@ -847,15 +889,15 @@
 </main>
 
 <!-- ==================== FOOTER ==================== -->
-<footer class="border-t border-slate-200 bg-white py-10 transition-colors duration-300 dark:border-slate-800 dark:bg-slate-900">
+<footer class="border-t border-slate-200 bg-white py-8 transition-colors duration-300 dark:border-slate-800 dark:bg-slate-900 sm:py-10">
   <div class="mx-auto max-w-6xl px-4 sm:px-6">
-    <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
-      <p class="text-sm text-ink dark:text-slate-300">
+    <div class="flex flex-col items-center gap-5 sm:flex-row sm:justify-between sm:gap-6">
+      <p class="text-[13px] text-ink dark:text-slate-300 sm:text-sm">
         © <span id="year">2026</span> Dinesh E. All rights reserved.
       </p>
 
       <!-- Footer contact links -->
-      <ul class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs">
+      <ul class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[11px] sm:gap-x-5 sm:text-xs">
         <li>
           <a href="tel:+919066734707" class="inline-flex items-center gap-1.5 font-semibold text-ink transition-colors hover:text-accentDark dark:text-slate-300 dark:hover:text-accent">
             <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
@@ -864,13 +906,13 @@
             +91-9066734707
           </a>
         </li>
-        <li>
-          <a href="mailto:dineshofficial7698@gmail.com" class="inline-flex items-center gap-1.5 font-semibold text-ink transition-colors hover:text-accentDark dark:text-slate-300 dark:hover:text-accent">
-            <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+        <li class="min-w-0">
+          <a href="mailto:dineshofficial7698@gmail.com" class="inline-flex min-w-0 items-center gap-1.5 font-semibold text-ink transition-colors hover:text-accentDark dark:text-slate-300 dark:hover:text-accent">
+            <svg class="h-3.5 w-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
               <rect x="3" y="5" width="18" height="14" rx="2" />
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 7l9 6 9-6" />
             </svg>
-            dineshofficial7698@gmail.com
+            <span class="break-safe">dineshofficial7698@gmail.com</span>
           </a>
         </li>
         <li>
@@ -884,36 +926,36 @@
       </ul>
     </div>
 
-    <p class="mt-6 text-center text-xs font-medium text-slate-400 dark:text-slate-500">
+    <p class="mt-5 text-center text-[11px] font-medium text-slate-400 dark:text-slate-500 sm:mt-6 sm:text-xs">
       Business Development · B2B Sales · SaaS &amp; IT Services · Bengaluru, India
     </p>
   </div>
 </footer>
 
 <!-- ==================== FLOATING QUICK-CONTACT (Resume · Call · WhatsApp · LinkedIn) ==================== -->
-<div class="fixed bottom-24 right-4 z-40 flex flex-col gap-3 sm:right-6" aria-label="Quick contact options">
+<div class="fab-contact fixed right-3 z-40 flex flex-col gap-2 sm:right-6 sm:gap-3" aria-label="Quick contact options">
 
   <!-- Resume -->
-  <a href="https://drive.google.com/file/d/1y6jcrisOG4mxI-xOTOHS4JA0XvQxdRLQ/view?usp=drivesdk" download
-     class="group relative grid h-11 w-11 place-items-center rounded-full bg-navy text-white shadow-cardHover ring-1 ring-navy/20 transition-all duration-300 hover:-translate-y-1 hover:bg-navyLight hover:ring-navyLight dark:bg-slate-700 dark:text-white dark:ring-slate-600 dark:hover:bg-accent dark:hover:text-navy dark:hover:ring-accent sm:h-12 sm:w-12"
+  <a href="Dinesh-E-Resume-2026.pdf" download
+     class="group relative grid h-10 w-10 place-items-center rounded-full bg-navy text-white shadow-cardHover ring-1 ring-navy/20 transition-all duration-300 hover:-translate-y-1 hover:bg-navyLight hover:ring-navyLight dark:bg-slate-700 dark:text-white dark:ring-slate-600 dark:hover:bg-accent dark:hover:text-navy dark:hover:ring-accent sm:h-12 sm:w-12"
      aria-label="Download Resume" title="Download Resume">
-    <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24" aria-hidden="true">
+    <svg class="h-4 w-4 sm:h-5 sm:w-5" fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24" aria-hidden="true">
       <path stroke-linecap="round" stroke-linejoin="round" d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
       <path stroke-linecap="round" stroke-linejoin="round" d="M14 2v6h6M12 18v-6m0 0l-2.5 2.5M12 12l2.5 2.5" />
     </svg>
-    <span class="pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-lg bg-navy px-2.5 py-1.5 text-xs font-semibold text-white opacity-0 shadow-card transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 dark:bg-slate-700">
+    <span class="pointer-events-none absolute right-full mr-3 hidden whitespace-nowrap rounded-lg bg-navy px-2.5 py-1.5 text-xs font-semibold text-white opacity-0 shadow-card transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 dark:bg-slate-700 sm:block">
       Resume
     </span>
   </a>
 
   <!-- Call -->
   <a href="tel:+919066734707"
-     class="group relative grid h-11 w-11 place-items-center rounded-full bg-white text-navy shadow-cardHover ring-1 ring-slate-200 transition-all duration-300 hover:-translate-y-1 hover:bg-navy hover:text-white hover:ring-navy dark:bg-slate-800 dark:text-white dark:ring-slate-700 dark:hover:bg-accent dark:hover:text-navy dark:hover:ring-accent sm:h-12 sm:w-12"
+     class="group relative grid h-10 w-10 place-items-center rounded-full bg-white text-navy shadow-cardHover ring-1 ring-slate-200 transition-all duration-300 hover:-translate-y-1 hover:bg-navy hover:text-white hover:ring-navy dark:bg-slate-800 dark:text-white dark:ring-slate-700 dark:hover:bg-accent dark:hover:text-navy dark:hover:ring-accent sm:h-12 sm:w-12"
      aria-label="Call Dinesh E" title="Call Now">
-    <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24" aria-hidden="true">
+    <svg class="h-4 w-4 sm:h-5 sm:w-5" fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24" aria-hidden="true">
       <path stroke-linecap="round" stroke-linejoin="round" d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
     </svg>
-    <span class="pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-lg bg-navy px-2.5 py-1.5 text-xs font-semibold text-white opacity-0 shadow-card transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 dark:bg-slate-700">
+    <span class="pointer-events-none absolute right-full mr-3 hidden whitespace-nowrap rounded-lg bg-navy px-2.5 py-1.5 text-xs font-semibold text-white opacity-0 shadow-card transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 dark:bg-slate-700 sm:block">
       Call
     </span>
   </a>
@@ -921,12 +963,12 @@
   <!-- WhatsApp -->
   <a href="https://wa.me/919066734707?text=Hi%20Dinesh%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20connect."
      target="_blank" rel="noopener noreferrer"
-     class="group relative grid h-11 w-11 place-items-center rounded-full bg-[#25D366] text-white shadow-cardHover ring-1 ring-[#25D366]/30 transition-all duration-300 hover:-translate-y-1 hover:bg-[#1EBE5D] hover:ring-[#1EBE5D] sm:h-12 sm:w-12"
+     class="group relative grid h-10 w-10 place-items-center rounded-full bg-[#25D366] text-white shadow-cardHover ring-1 ring-[#25D366]/30 transition-all duration-300 hover:-translate-y-1 hover:bg-[#1EBE5D] hover:ring-[#1EBE5D] sm:h-12 sm:w-12"
      aria-label="Chat on WhatsApp" title="Chat on WhatsApp">
-    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <svg class="h-4 w-4 sm:h-5 sm:w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
     </svg>
-    <span class="pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-lg bg-navy px-2.5 py-1.5 text-xs font-semibold text-white opacity-0 shadow-card transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 dark:bg-slate-700">
+    <span class="pointer-events-none absolute right-full mr-3 hidden whitespace-nowrap rounded-lg bg-navy px-2.5 py-1.5 text-xs font-semibold text-white opacity-0 shadow-card transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 dark:bg-slate-700 sm:block">
       WhatsApp
     </span>
   </a>
@@ -934,20 +976,20 @@
   <!-- LinkedIn -->
   <a href="https://www.linkedin.com/in/dinesh7698/"
      target="_blank" rel="noopener noreferrer me"
-     class="group relative grid h-11 w-11 place-items-center rounded-full bg-[#0A66C2] text-white shadow-cardHover ring-1 ring-[#0A66C2]/30 transition-all duration-300 hover:-translate-y-1 hover:bg-[#084E96] hover:ring-[#084E96] sm:h-12 sm:w-12"
+     class="group relative grid h-10 w-10 place-items-center rounded-full bg-[#0A66C2] text-white shadow-cardHover ring-1 ring-[#0A66C2]/30 transition-all duration-300 hover:-translate-y-1 hover:bg-[#084E96] hover:ring-[#084E96] sm:h-12 sm:w-12"
      aria-label="Connect on LinkedIn" title="Connect on LinkedIn">
-    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <svg class="h-4 w-4 sm:h-5 sm:w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
       <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
     </svg>
-    <span class="pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-lg bg-navy px-2.5 py-1.5 text-xs font-semibold text-white opacity-0 shadow-card transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 dark:bg-slate-700">
+    <span class="pointer-events-none absolute right-full mr-3 hidden whitespace-nowrap rounded-lg bg-navy px-2.5 py-1.5 text-xs font-semibold text-white opacity-0 shadow-card transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 dark:bg-slate-700 sm:block">
       LinkedIn
     </span>
   </a>
 </div>
 
-<!-- ==================== BACK TO TOP ==================== -->
+<!-- ==================== BACK TO TOP (desktop/tablet only) ==================== -->
 <button id="toTop" type="button"
-        class="fixed bottom-6 right-4 z-40 grid h-11 w-11 translate-y-4 place-items-center rounded-xl bg-navy text-white opacity-0 shadow-cardHover transition-all duration-300 hover:bg-navyLight focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 dark:bg-accent dark:text-navy dark:hover:bg-accentDark dark:hover:text-white dark:focus:ring-offset-slate-950 sm:right-6"
+        class="to-top-btn fixed right-6 z-40 hidden h-11 w-11 translate-y-4 place-items-center rounded-xl bg-navy text-white opacity-0 shadow-cardHover transition-all duration-300 hover:bg-navyLight focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 dark:bg-accent dark:text-navy dark:hover:bg-accentDark dark:hover:text-white dark:focus:ring-offset-slate-950 sm:grid"
         aria-label="Back to top">
   <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
     <path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m0 0l-6 6m6-6l6 6" />
@@ -1040,6 +1082,14 @@
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') closeMenu();
     });
+
+    // Close when viewport grows past md
+    if (window.matchMedia) {
+      var mqDesktop = window.matchMedia('(min-width: 768px)');
+      var desktopHandler = function (e) { if (e.matches) closeMenu(); };
+      if (mqDesktop.addEventListener) mqDesktop.addEventListener('change', desktopHandler);
+      else if (mqDesktop.addListener) mqDesktop.addListener(desktopHandler);
+    }
   }
 
   /* ---------- 3. Header shadow + back-to-top on scroll ---------- */
@@ -1083,14 +1133,14 @@
           obs.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
     revealEls.forEach(function (el) { revealObserver.observe(el); });
   } else {
     revealEls.forEach(function (el) { el.classList.add('is-visible'); });
   }
 
-  /* ---------- 6. Active nav link on scroll ---------- */
+  /* ---------- 6. Active nav link on scroll (desktop only) ---------- */
   var sections = document.querySelectorAll('main section[id]');
   var navLinks = document.querySelectorAll('.nav-link');
 
